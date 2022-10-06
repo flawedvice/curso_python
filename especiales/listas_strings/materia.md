@@ -419,3 +419,65 @@ else:
 
 # is real!
 ```
+
+&nbsp;
+
+## Splitting & Joining
+Si bien las strings son un tipo especial de lista, podemos convertir a una string en una lista de substrings dividiéndola bajo algún criterio específico.
+
+Por ejemplo, podemos dividir una cadena en subcadenas separándola en cada espacio:
+```Python
+my_str = 'the brown fox jumps over the lazy dog'
+
+my_list = my_str.split()
+
+print(my_list)
+# ['the', 'brown', 'fox', 'jumps', 'over', 'the', 'lazy', 'dog']
+```
+Ese es el método `split()` de las cadenas.
+
+Podemos especificar el caracter por el cual separar la cadena; por ejemplo, podemos separarla por cada coma (`,`):
+```Python
+'FAANG means Facebook, Apple, Amazon, Netflix and Google'.split(',')
+
+# ['FAANG means Facebook', ' Apple', ' Amazon', ' Netflix and Google']
+```
+Por otra parte, podemos realizar el proceso inverso, esto es, convertir una lista en una cadena, utilizando el método `join()`.
+
+Este método se utiliza de una manera diferente. Aquí debemos aplicar el método sobre la subcadena que servirá de "pegamento" para la lista, y esta última será el parámetro a utilizar:
+```Python
+",".join(['FAANG means Facebook', ' Apple', ' Amazon', ' Netflix and Google'])
+
+# 'FAANG means Facebook, Apple, Amazon, Netflix and Google'
+```
+
+&nbsp;
+
+## Concatenación
+Un tópico importante cuando se habla de cadenas de texto es la concatenación; esto es, la unión consecutiva de cadenas.
+
+En Python es bastante simple: Solo debemos "*sumar*" las cadenas:
+```Python
+'Hello' + ' ' + 'World' + '!'
+# Hello World!
+```
+
+Recuerda que las cadenas de texto son listas especiales. También podemos concatenar listas de esa misma forma:
+```Python
+[ 1, 2, 3 ] + [ 4 ]
+# [ 1, 2, 3, 4 ]
+```
+
+&nbsp;
+
+
+&nbsp;
+
+---
+
+&nbsp;
+
+
+&nbsp;
+
+# Bonus: REGEX
