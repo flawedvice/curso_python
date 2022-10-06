@@ -231,8 +231,111 @@ En cuanto a métodos, es decir, **funciones propias** de las listas, podemos des
 &nbsp;
 
 # Conceptos Avanzados
+
+## Chequear elementos presentes:
+Podemos chequear rápidamente si un elemento se halla en una lista con:
+```Python
+if 4 in [1,2,3,4]:
+    print("Found!")
+else:
+    print("Not found")
+
+# Found
+
+if 37 in [1,2,3,4]:
+    print("Found!")
+else:
+    print("Not found")
+
+# Not found
+```
+
+&nbsp;
+
 ## *List Comprehensions*
-## *Slicing*
+Anteriormente vimos que habían dos maneras de crear una lista:
+```Python
+my_list = []
+other_list = list()
+```
+
+Sin embargo, existe una tercera forma llamada ***list comprehensions***.
+Inicialmente puede costar algo de trabajo entendiendo lo que está pasando, pero vamos paso a paso:
+
+Imaginemos que queremos una lista con el cuadrado de los números del 1 al 10; algo así como esto:
+```Python
+[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+```
+Podríamos intentar algo como esto para lograrlo:
+```Python
+my_list = []
+
+for i in range(1,11):
+    result = i**2
+    my_list.append(result)
+
+print(my_list)
+# [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+```
+
+Eso funciona bastante bien, pero es una tarea bastante sencilla que muchas veces quisiéramos que ocupara el menor espacio posible y fuera rápida de hacer...
+
+Bueno, podemos lograrlo con una *list comprehension*:
+
+```Python
+my_list = [ x**2 for x in range(1,11) ]
+
+print(my_list)
+# [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+```
+Podemos leerlo como:
+"Crea una lista con el cuadrado de cada *x* en un rango del 1 al 11."
+
+&nbsp;
+
+## Acceso avanzado en listas
+Ya sabemos que podemos acceder a los valores de una lista con la notación &nbsp; `my_list[index]`, pero, ¿qué pasa si queremos acceder a un segmento más grande de la lista?
+
+Utilizando una notación parecida, podemos tomar un segmento o rango de elementos de una lista:
+```Python
+my_list = [1, 4, 9, 16, 25, 36, 49]
+
+list_segment = my_list[1:4]
+print(list_segment)
+# [4, 9, 16]
+```
+Lo que acabamos de hacer es seleccionar los elementos que van desde el índice 1 (segundo elemento) hasta el índice 4 (exclusivo).
+
+Si quisiéramos obtener los primeros 4 elementos podemos omitir el primer índice:
+```Python
+first_four = my_list[:4]
+print(list_segment)
+# [1, 4, 9, 16]
+```
+
+Si deseáramos obtener los últimos 3 elementos, omitimos el segundo índice **pero siempre mantenemos los puntos ":"**:
+```Python
+last_three = my_list[4:]
+print(list_segment)
+# [25, 36, 49]
+```
+
+&nbsp;
+Por otra parte, un detalle importante a recalcar es que en una lista podemos acceder a sus elementos de atrás para adelante (los últimos a los primeros) utilizando índices negativos.
+
+Por ejemplo, si deseamos obtener el último y penúltimo ítem:
+```Python
+last = my_list[-1]
+second_to_last = my_list[-2]
+print(last, second_to_last)
+# [49, 36]
+```
+Y al igual que los índices positivos, también podemos utilizar índices negativos al tomar segmentos:
+```Python
+segment = my_list[4:-1]
+print(segment)
+# [25, 36]
+```
 
 &nbsp;
 
@@ -241,4 +344,78 @@ En cuanto a métodos, es decir, **funciones propias** de las listas, podemos des
 
 ---
 
+&nbsp;
+
+
+&nbsp;
+
 # *Strings*
+Finalmente, las ***Strings*** o *cadenas de texto*.
+
+¿Por qué vemos esto al final de las listas si ya sabemos que son un tipo de dato en Python (primeras clases, dah)?
+
+Bueno, si bien en Python "son" un tipo de dato, originalmente las *strings* no existían como tal, sino que para crear un texto debías crear una **lista de caracteres**.
+
+Así es, las *strings* no son más que listas de caracteres, y en lugar de crearlas con corchetes (`[]`) las creamos con comillas (`"" ''`).
+
+Por lo tanto, las *strings* poseen las mismas propiedades y métodos que las listas con algunas pocas excepciones.
+
+Dichas excepciones son algunos métodos propios, los cuales son tantos y tan variados que dejaré un enlace a la documentación que los muestra en detalle:
+
+[W3Schools Python Strings](https://www.w3schools.com/python/python_strings_methods.asp)
+
+&nbsp;
+
+## Cadenas Multilínea:
+Podemos escribir una *string* multilínea usando triples comillas de la forma:
+```Python
+multiline = """This is
+                a multiline
+                string!"""
+```
+
+&nbsp;
+
+## Formateo de *Strings*:
+Como uso avanzado de las *strings* es necesario mostrar que podemos formatearlas para utilizar elementos dinámicos, como alguna variable, en su interior.
+
+Por ejemplo, si quisiera saludar a un usuario por su nombre (el cual claramente no lo sé :p) puedo formatear una cadena para mostrarlo:
+```Python
+name = 'Ada Lovelace'
+
+greetings = f"Welcome, {name}!"
+
+print(greetings)
+# Welcome, Ada Lovelace!
+```
+
+Existen otras formas de formatear una cadena, como las siguientes que tienen el mismo resultado:
+```Python
+name = 'Ada Lovelace'
+print("Welcome, {}!".format(name))
+# Welcome, Ada Lovelace!
+
+print("Welcome, ", name, "!")
+# Welcome, Ada Lovelace!
+```
+Sin embargo, la primera versión es la más sucinta y común, por tanto, la más recomendable.
+
+&nbsp;
+
+## Buscar palabras en cadenas:
+Podemos, al igual que en las listas, chequear si palabras se hallan o no al interior de una *string* con el operando `in`:
+```Python
+if "Hello" in "Hello World!":
+    print("Found!")
+else:
+    print("Not found")
+
+# Found!
+
+if "The Cake" not in "Hello World!":
+    print("is real!")
+else:
+    print("is a lie")
+
+# is real!
+```
