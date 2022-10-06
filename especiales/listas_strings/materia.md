@@ -230,6 +230,47 @@ En cuanto a métodos, es decir, **funciones propias** de las listas, podemos des
 
 &nbsp;
 
+# Listas multidimensionales:
+No todo es color de rosa, y si queremos hacer algo complicado, podemos hacerlo :D.
+
+Las listas multidimensionales ("*nested lists*") son listas, dentro de otras listas, que a su vez pueden estar dentro de otras listas, y así...
+
+Para quienes sepan de matrices, puede que el concepto les sea más familiar.
+
+De todas maneras, un ejemplo puede hacer más fáciles las cosas:
+```Python
+# 1-D List
+one_dim = [ 1, 2, 3 ]
+
+# 2-D List
+two_dim = [ 1, [2, 3], 4]
+# 1-D: 1, 4
+# 2-D: 2, 3
+
+# 3-D List
+three_dim = [ 1, [2, 3], [ 4 , [ 5, 6 ], 7 ] ]
+# 1-D: 1
+# 2-D: 2, 3, 4, 7
+# 3-D: 5, 6
+```
+Como habrás notado, fácilmente se convierte en un pequeño infierno de dimensiones.
+
+Ahora, el problema técnico: ¿Cómo accedemos a tantos niveles?
+
+Si quisiéramos acceder, por ejemplo, al número 5 de la lista `three_dim`, tendríamos que escribir lo siguiente:
+```Python
+three_dim[2][1][0]
+# three_dim[2] == [ 4, [ 5, 6 ], 7 ]
+# three_dim[2][1] == [ 5, 6 ]
+# three_dim[2][1][0] == 5
+```
+Primero ubicamos los índices de las dimensiones "menores" o más cercanas, de manera que vamos describiendo índice por índice nuestro camino hasta donde queremos llegar. 
+
+&nbsp;
+
+
+&nbsp;
+
 # Conceptos Avanzados
 
 ## Chequear elementos presentes:
