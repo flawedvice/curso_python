@@ -184,11 +184,89 @@ my_car.price
 &nbsp;
 
 # Variables privadas
+Las clases y, por consecuencia, los objetos, nos ofrecen una agradable interfaz donde no necesitamos saber cómo funcionan, sino solo qué es lo que retornan.
+
+Pero hay momentos en donde querremos que ciertos atributos o métodos no sean accesibles desde afuera, esto es, que no sean accesibles desde otras partes del código.
+
+Pero, ¿cómo logramos lo anterior?
+
+Lamentablemente (o por suerte), Python no provee un mecanismo para evitar el acceso a todas las las variables de un objeto.
+
+Sin embargo, existe la convención de crear **variables privadas**, donde nombraremos las variables que queremos restringir de una manera ligeramente diferente: anteponiendo un guión bajo (`_`).
+Por ejemplo, deberemos saber que **no debemos** acceder a miembros (aka variables) de un objeto que empiecen con `_`:
+
+```Python
+class Auto:
+
+    # Variable privada
+    _previous_owner = 'Ada Lovelace'
+
+    def __init__(self, color, model, mileage, price):
+        self.color = color
+        self.model = model
+        self.mileage = mileage
+        self.price = price
+
+    
+    def get_painted(color):
+        print(f'Painting {color}')
+    
+    def apply_discount(percentage):
+        print(f'Applying {percentage}% discount')
+```
+Aquí **podemos, pero no debemos** acceder a la variable `_previous_owner`.
 
 &nbsp;
 
-# Principios de OOP
+# Principios de OOP, Parte 1
+Preguntas clásicas en los cursos de OOP, que es bueno conocer pero, principalmente, es importante solo entender estos principios.
+
+Hasta ahora hemos observado dos de estos cuatro principios:
+- **Abstracción**
+- **Encapsulamiento**
+- Herencia
+- Polimorfismo
+
 ## Abstracción
-## Herencia
+La **abstracción** tiene que ver con que un objeto bien representa un *concepto*; no nos interesa cómo funciona o qué tiene dentro, pero sí nos importa lo que puede ayudarnos a hacer.
+
+Con la abstracción, un objeto esconde esos detalles técnicos y nos permite realizar acciones sin preocuparnos del cómo lo hace.
+
+Un ejemplo de la vida: Cuando queremos sacar dinero desde un cajero automático, no sabemos cómo nos lo entrega, pero sí conocemos lo suficiente como para realizar el proceso.
+
+El cajero automático ***esconde su implementación interna***.
+
 ## Encapsulamiento
+El **encapsulamiento** significa que "*lo que pasa en los objetos, se queda en los objetos*". Básicamente, cuando interactuemos con un objeto, sabremos que lo único que puede ser modificado es el objeto mismo. En otras palabras, si arruinamos algo dentro del objeto no habremos arruinado nada fuera de este; el resto del código estará seguro.
+
+Cada objeto es una *cápsula* que encierra su propio mundo, lógica y reglas de funcionamiento.
+
+&nbsp;
+
+# Herencia
+Todo súper hasta ahora, pero nuestro concepto de auto no contempla todos los detalles que nos gustaría.
+
+Sería ideal poder diferenciar entre diferentes tipos de auto; por ejemplo, tener camionetas, SUVs, sedans, etc...
+
+¿Cómo podemos lograr esto?
+
+Una opción es agregar la variable `car_type` en la clase `Auto`, pero no queremos acceder a cada objeto para saber de qué tipo es.
+
+Otra opción, **nuestra opción**, es crear nuevas clases que hereden las características de `Auto`.
+
+¿Qué significa que hereden? Tal como funciona en la vida real con padres e hijas/os, un descendiente puede obtener características de sus progenitores.
+
+Veamos cómo funciona esto en Python:
+```Python
+# Creamos una nueva clase "Camioneta"
+class Camioneta:
+    
+```
+
+
+&nbsp;
+
+# Principios de OOP, Parte 2
 ## Polimorfismo
+
+## Herencia
